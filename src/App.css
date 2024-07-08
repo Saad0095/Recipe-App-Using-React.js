@@ -1,0 +1,20 @@
+.recipes-list {
+display: grid;
+grid-template-columns: repeat(3,minmax(200px, 1fr));
+justify-items: center;
+align-items: center;
+gap: 10px;
+}
+
+.modal-header {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modal-body {
+  padding: 20px;
+}
+
+.modal-footer {
+  border-top: 1px solid #dee2e6;
+}
