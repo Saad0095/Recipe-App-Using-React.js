@@ -5,10 +5,10 @@ const Recipes = ({ recipes }) => {
 
   const handleViewRecipe = (recipe) => {
     setSelectedRecipe(recipe);
-    const modal = new window.bootstrap.Modal(
-      document.getElementById("recipeModal")
-    );
-    modal.show();
+    setTimeout(() => {
+      const modal = new window.bootstrap.Modal(document.getElementById("recipeModal"));
+      modal.show();
+    }, 100);
   };
 
   return (
@@ -58,11 +58,11 @@ const Recipes = ({ recipes }) => {
                 />
                 <p>{selectedRecipe.description}</p>
                 <h5>Ingredients:</h5>
-                <p>
-                  {selectedRecipe.ingredients.map((ingredient)=>(
-                  <li>{ingredient}</li>
-                ))}
-                </p>
+                <ul>
+                  {selectedRecipe.ingredients.map((ingredient, index) => (
+                    <li key={index}>{ingredient}</li>
+                  ))}
+                </ul>
                 <h5>Instructions:</h5>
                 <p>{selectedRecipe.instructions}</p>
                 <p><b>Cooking Time: </b>{selectedRecipe.cookingTime} min</p>

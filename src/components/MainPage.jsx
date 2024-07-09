@@ -1,6 +1,16 @@
 import React, { useState } from "react";
 import Recipes from "./Recipes";
-import react from "react";
+import juiceThumbnail from '../images/juice-thumbnail.jpeg';
+import burgerThumbnail from '../images/burger-thumbnail.jpeg';
+import italianPizzaThumbnail from '../images/italian-pizza-thumbnail.jpeg';
+import malaiBotiThumbnail from '../images/malai-boti-thumbnail.jpeg';
+import tikkaBotiThumbnail from '../images/tikka-boti-thumbnail.jpeg';
+import chickenBiryaniThumbnail from '../images/chicken-biryani-thumbnail.jpeg';
+import beefBiryaniThumbnail from '../images/beef-biryani-thumbnail.jpeg';
+import sindhiBiryaniThumbnail from '../images/sindhi-biryani-thumbnail.jpeg';
+import bihariBotiThumbnail from '../images/bihari-boti-thumbnail.jpeg';
+import frenchFriesThumbnail from '../images/french-fries-thumbnail.jpeg';
+import pastaThumbnail from '../images/pasta-thumbnail.jpeg';
 
 const MainPage = () => {
   const allRecipes = [
@@ -11,7 +21,7 @@ const MainPage = () => {
       ingredients: ['fresh fruit', 'water', 'sugar', 'ice cubes'],
       instructions: 'Blend the fresh fruit with water and sugar until smooth. Serve over ice cubes.',
       cookingTime: 5,
-      thumbnail: '../assets/juice-thumbnail.jpg',
+      thumbnail: juiceThumbnail,
     },
     {
       id: 2,
@@ -20,7 +30,7 @@ const MainPage = () => {
       ingredients: ['burger buns', 'ground beef', 'cheese', 'lettuce', 'tomato', 'onion', 'pickles', 'ketchup', 'mustard'],
       instructions: 'Grill the ground beef patties until cooked. Assemble the burger with buns, cheese, lettuce, tomato, onion, pickles, ketchup, and mustard.',
       cookingTime: 20,
-      thumbnail: '../assets/burger-thumbnail.jpg',
+      thumbnail: burgerThumbnail,
     },
     {
       id: 3,
@@ -29,7 +39,7 @@ const MainPage = () => {
       ingredients: ['pizza dough', 'tomato sauce', 'mozzarella cheese', 'basil', 'olive oil'],
       instructions: 'Spread the tomato sauce on the pizza dough. Add mozzarella cheese and basil. Drizzle with olive oil. Bake in the oven until crust is golden brown.',
       cookingTime: 15,
-      thumbnail: '../assets/italian-pizza-thumbnail.jpg',
+      thumbnail: italianPizzaThumbnail,
     },
     {
       id: 4,
@@ -38,7 +48,7 @@ const MainPage = () => {
       ingredients: ['chicken pieces', 'yogurt', 'cream', 'ginger-garlic paste', 'spices'],
       instructions: 'Marinate the chicken pieces in yogurt, cream, ginger-garlic paste, and spices. Grill until cooked through.',
       cookingTime: 25,
-      thumbnail: '../assets/malai-boti-thumbnail.jpg',
+      thumbnail: malaiBotiThumbnail,
     },
     {
       id: 5,
@@ -47,7 +57,7 @@ const MainPage = () => {
       ingredients: ['chicken pieces', 'yogurt', 'lemon juice', 'ginger-garlic paste', 'spices'],
       instructions: 'Marinate the chicken pieces in yogurt, lemon juice, ginger-garlic paste, and spices. Grill until cooked through.',
       cookingTime: 20,
-      thumbnail: '../assets/tikka-boti-thumbnail.jpg',
+      thumbnail: tikkaBotiThumbnail,
     },
     {
       id: 6,
@@ -56,7 +66,7 @@ const MainPage = () => {
       ingredients: ['chicken', 'basmati rice', 'yogurt', 'spices', 'fried onions', 'saffron', 'mint', 'cilantro'],
       instructions: 'Cook the chicken with spices. Layer the cooked chicken and rice with yogurt, fried onions, saffron, mint, and cilantro. Steam until fully cooked.',
       cookingTime: 60,
-      thumbnail: '../assets/chicken-biryani-thumbnail.jpg',
+      thumbnail: chickenBiryaniThumbnail,
     },
     {
       id: 7,
@@ -65,7 +75,7 @@ const MainPage = () => {
       ingredients: ['beef', 'basmati rice', 'yogurt', 'spices', 'fried onions', 'saffron', 'mint', 'cilantro'],
       instructions: 'Cook the beef with spices. Layer the cooked beef and rice with yogurt, fried onions, saffron, mint, and cilantro. Steam until fully cooked.',
       cookingTime: 75,
-      thumbnail: '../assets/beef-biryani-thumbnail.jpg',
+      thumbnail: beefBiryaniThumbnail,
     },
     {
       id: 8,
@@ -74,7 +84,7 @@ const MainPage = () => {
       ingredients: ['chicken or beef', 'basmati rice', 'potatoes', 'yogurt', 'spices', 'fried onions', 'saffron', 'mint', 'cilantro'],
       instructions: 'Cook the meat with spices and potatoes. Layer the cooked meat and rice with yogurt, fried onions, saffron, mint, and cilantro. Steam until fully cooked.',
       cookingTime: 75,
-      thumbnail: '../assets/sindhi-biryani-thumbnail.jpg',
+      thumbnail: sindhiBiryaniThumbnail,
     },
     {
       id: 9,
@@ -83,7 +93,7 @@ const MainPage = () => {
       ingredients: ['beef pieces', 'yogurt', 'mustard oil', 'spices'],
       instructions: 'Marinate the beef pieces in yogurt, mustard oil, and spices. Grill until cooked through.',
       cookingTime: 30,
-      thumbnail: '../assets/bihari-boti-thumbnail.jpg',
+      thumbnail: bihariBotiThumbnail,
     },
     {
       id: 10,
@@ -92,7 +102,7 @@ const MainPage = () => {
       ingredients: ['potatoes', 'salt', 'oil'],
       instructions: 'Cut the potatoes into strips. Fry in hot oil until golden and crispy. Season with salt.',
       cookingTime: 15,
-      thumbnail: '../assets/french-fries-thumbnail.jpg',
+      thumbnail: frenchFriesThumbnail,
     },
     {
       id: 11,
@@ -101,10 +111,10 @@ const MainPage = () => {
       ingredients: ['pasta', 'olive oil', 'garlic', 'parmesan cheese', 'parsley'],
       instructions: 'Cook the pasta according to the package instructions. In a pan, sauté garlic in olive oil. Toss the cooked pasta with the garlic oil, parmesan cheese, and parsley.',
       cookingTime: 20,
-      thumbnail: '../assets/pasta-thumbnail.jpg',
+      thumbnail: pastaThumbnail,
     },
   ];
-  
+
 
   const [recipes, setRecipes] = useState([]);
 
