@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import Recipes from "./Recipes";
+import Footer from "./Footer";
+
+//Images
 import juiceThumbnail from '../images/juice-thumbnail.jpeg';
 import burgerThumbnail from '../images/burger-thumbnail.jpeg';
 import italianPizzaThumbnail from '../images/italian-pizza-thumbnail.jpeg';
@@ -134,15 +137,19 @@ const MainPage = () => {
 
     if (filteredRecipes.length === 0){
       errMsg.innerText = "No Result Found";
+      setRecipes([])
     }
 
-    console.log(filteredRecipes)
-    setRecipes(filteredRecipes)
+    else{
+      setRecipes(filteredRecipes)
+      errMsg.innerText = "";
+
+    }
   };
 
   return (
     <>
-      <div className="container my-5">
+      <div className="container main-container my-5">
         <div className="heading text-center">
           <h1>Food Recipe App</h1>
         </div>
@@ -164,6 +171,7 @@ const MainPage = () => {
           <Recipes recipes={recipes} />
         </div>
       </div>
+        <Footer/>
     </>
   );
 };
