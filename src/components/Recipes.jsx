@@ -15,10 +15,9 @@ const Recipes = ({ recipes }) => {
     <div>
       <div className="recipes-list">
         {recipes.map((recipe) => (
-          <div key={recipe.idMeal} className="recipe-item">
-            <img className="img-fluid" src={recipe.strMealThumb} alt="" />
-            <h3>{recipe.strMeal}</h3>
-            <p>{recipe.strCategory}</p>
+          <div key={recipe.id} className="recipe-item">
+            <img className="img-fluid" src={recipe.thumbnail} alt="" />
+            <h3>{recipe.name}</h3>
             <button
               type="button"
               className="btn btn-danger"
@@ -42,7 +41,7 @@ const Recipes = ({ recipes }) => {
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="recipeModalLabel">
-                  {selectedRecipe.strMeal}
+                  {selectedRecipe.name}
                 </h5>
                 <button
                   type="button"
@@ -54,29 +53,19 @@ const Recipes = ({ recipes }) => {
               <div className="modal-body">
                 <img
                   className="img-fluid mb-3"
-                  src={selectedRecipe.strMealThumb}
+                  src={selectedRecipe.thumbnail}
                   alt=""
                 />
-                <p>
-                  <b>Category: {selectedRecipe.strCategory}</b>
-                </p>
+                <p>{selectedRecipe.description}</p>
                 <h5>Ingredients:</h5>
-                <ul>
-                  {selectedRecipe.strIngredient1 && <li>{selectedRecipe.strIngredient1}</li>}
-                  {selectedRecipe.strIngredient2 && <li>{selectedRecipe.strIngredient2}</li>}
-                  {selectedRecipe.strIngredient3 && <li>{selectedRecipe.strIngredient3}</li>}
-                  {selectedRecipe.strIngredient4 && <li>{selectedRecipe.strIngredient3}</li>}
-                  {selectedRecipe.strIngredient5 && <li>{selectedRecipe.strIngredient3}</li>}
-                  {selectedRecipe.strIngredient6 && <li>{selectedRecipe.strIngredient3}</li>}
-                  {selectedRecipe.strIngredient7 && <li>{selectedRecipe.strIngredient3}</li>}
-                  {selectedRecipe.strIngredient8 && <li>{selectedRecipe.strIngredient3}</li>}
-                  {selectedRecipe.strIngredient9 && <li>{selectedRecipe.strIngredient3}</li>}
-                  {selectedRecipe.strIngredient10 && <li>{selectedRecipe.strIngredient3}</li>}
-                  {selectedRecipe.strIngredient11 && <li>{selectedRecipe.strIngredient3}</li>}
-                  {selectedRecipe.strIngredient12 && <li>{selectedRecipe.strIngredient3}</li>}
-                </ul>
+                <p>
+                  {selectedRecipe.ingredients.map((ingredient)=>(
+                  <li>{ingredient}</li>
+                ))}
+                </p>
                 <h5>Instructions:</h5>
-                <p>{selectedRecipe.strInstructions}</p>
+                <p>{selectedRecipe.instructions}</p>
+                <p><b>Cooking Time: </b>{selectedRecipe.cookingTime} min</p>
               </div>
               <div className="modal-footer">
                 <button

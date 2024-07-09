@@ -1,42 +1,133 @@
 import React, { useState } from "react";
 import Recipes from "./Recipes";
-// import RecipeDetails from "./RecipeDetails";
+import react from "react";
 
 const MainPage = () => {
-  let errMsg = document.querySelector(".error-msg");
-  const [recipeData, setData] = useState([]);
+  const allRecipes = [
+    {
+      id: 1,
+      name: 'Juice',
+      description: 'A refreshing fruit juice.',
+      ingredients: ['fresh fruit', 'water', 'sugar', 'ice cubes'],
+      instructions: 'Blend the fresh fruit with water and sugar until smooth. Serve over ice cubes.',
+      cookingTime: 5,
+      thumbnail: '../assets/juice-thumbnail.jpg',
+    },
+    {
+      id: 2,
+      name: 'Burger',
+      description: 'A juicy and delicious burger.',
+      ingredients: ['burger buns', 'ground beef', 'cheese', 'lettuce', 'tomato', 'onion', 'pickles', 'ketchup', 'mustard'],
+      instructions: 'Grill the ground beef patties until cooked. Assemble the burger with buns, cheese, lettuce, tomato, onion, pickles, ketchup, and mustard.',
+      cookingTime: 20,
+      thumbnail: '../assets/burger-thumbnail.jpg',
+    },
+    {
+      id: 3,
+      name: 'Italian Pizza',
+      description: 'A classic Italian pizza with tomato sauce and mozzarella.',
+      ingredients: ['pizza dough', 'tomato sauce', 'mozzarella cheese', 'basil', 'olive oil'],
+      instructions: 'Spread the tomato sauce on the pizza dough. Add mozzarella cheese and basil. Drizzle with olive oil. Bake in the oven until crust is golden brown.',
+      cookingTime: 15,
+      thumbnail: '../assets/italian-pizza-thumbnail.jpg',
+    },
+    {
+      id: 4,
+      name: 'Malai Boti',
+      description: 'Tender chicken pieces marinated in a creamy blend of spices.',
+      ingredients: ['chicken pieces', 'yogurt', 'cream', 'ginger-garlic paste', 'spices'],
+      instructions: 'Marinate the chicken pieces in yogurt, cream, ginger-garlic paste, and spices. Grill until cooked through.',
+      cookingTime: 25,
+      thumbnail: '../assets/malai-boti-thumbnail.jpg',
+    },
+    {
+      id: 5,
+      name: 'Tikka Boti',
+      description: 'Spicy grilled chicken tikka boti.',
+      ingredients: ['chicken pieces', 'yogurt', 'lemon juice', 'ginger-garlic paste', 'spices'],
+      instructions: 'Marinate the chicken pieces in yogurt, lemon juice, ginger-garlic paste, and spices. Grill until cooked through.',
+      cookingTime: 20,
+      thumbnail: '../assets/tikka-boti-thumbnail.jpg',
+    },
+    {
+      id: 6,
+      name: 'Chicken Biryani',
+      description: 'A fragrant and flavorful rice dish with chicken.',
+      ingredients: ['chicken', 'basmati rice', 'yogurt', 'spices', 'fried onions', 'saffron', 'mint', 'cilantro'],
+      instructions: 'Cook the chicken with spices. Layer the cooked chicken and rice with yogurt, fried onions, saffron, mint, and cilantro. Steam until fully cooked.',
+      cookingTime: 60,
+      thumbnail: '../assets/chicken-biryani-thumbnail.jpg',
+    },
+    {
+      id: 7,
+      name: 'Beef Biryani',
+      description: 'A rich and aromatic rice dish with beef.',
+      ingredients: ['beef', 'basmati rice', 'yogurt', 'spices', 'fried onions', 'saffron', 'mint', 'cilantro'],
+      instructions: 'Cook the beef with spices. Layer the cooked beef and rice with yogurt, fried onions, saffron, mint, and cilantro. Steam until fully cooked.',
+      cookingTime: 75,
+      thumbnail: '../assets/beef-biryani-thumbnail.jpg',
+    },
+    {
+      id: 8,
+      name: 'Sindhi Biryani',
+      description: 'A spicy and flavorful biryani from Sindh.',
+      ingredients: ['chicken or beef', 'basmati rice', 'potatoes', 'yogurt', 'spices', 'fried onions', 'saffron', 'mint', 'cilantro'],
+      instructions: 'Cook the meat with spices and potatoes. Layer the cooked meat and rice with yogurt, fried onions, saffron, mint, and cilantro. Steam until fully cooked.',
+      cookingTime: 75,
+      thumbnail: '../assets/sindhi-biryani-thumbnail.jpg',
+    },
+    {
+      id: 9,
+      name: 'Bihari Boti',
+      description: 'Tender beef pieces marinated in a rich blend of spices.',
+      ingredients: ['beef pieces', 'yogurt', 'mustard oil', 'spices'],
+      instructions: 'Marinate the beef pieces in yogurt, mustard oil, and spices. Grill until cooked through.',
+      cookingTime: 30,
+      thumbnail: '../assets/bihari-boti-thumbnail.jpg',
+    },
+    {
+      id: 10,
+      name: 'French Fries',
+      description: 'Crispy and golden french fries.',
+      ingredients: ['potatoes', 'salt', 'oil'],
+      instructions: 'Cut the potatoes into strips. Fry in hot oil until golden and crispy. Season with salt.',
+      cookingTime: 15,
+      thumbnail: '../assets/french-fries-thumbnail.jpg',
+    },
+    {
+      id: 11,
+      name: 'Pasta',
+      description: 'A simple and delicious pasta dish.',
+      ingredients: ['pasta', 'olive oil', 'garlic', 'parmesan cheese', 'parsley'],
+      instructions: 'Cook the pasta according to the package instructions. In a pan, sauté garlic in olive oil. Toss the cooked pasta with the garlic oil, parmesan cheese, and parsley.',
+      cookingTime: 20,
+      thumbnail: '../assets/pasta-thumbnail.jpg',
+    },
+  ];
+  
+
+  const [recipes, setRecipes] = useState([]);
+
   const [searchTerm, setSearchTerm] = useState("");
+  
+  let errMsg = document.querySelector(".error-msg");
 
   const handleSearchInput = (event) => {
     setSearchTerm(event.target.value);
   };
 
+  
   const getData = async () => {
-    // MealDB API
-    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${searchTerm}`;
+    const filteredRecipes = allRecipes.filter(recipe =>
+      recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
-    if (searchTerm == ""){
-      return;
-    }
-
-    try {
-      const response = await fetch(url);
-
-      if (!response.ok) throw new Error("Network response was not ok");
-
-      const jsonData = await response.json();
-      console.log(jsonData)
-
-      if (!jsonData.meals) {
-        throw new Error("No meals found");
-      }
-
-      setData(jsonData.meals || []);
-      errMsg.innerText = "";
-    } catch (error) {
-      console.error("Error fetching data:", error);
+    if (filteredRecipes.length === 0){
       errMsg.innerText = "No Result Found";
     }
+
+    console.log(filteredRecipes)
+    setRecipes(filteredRecipes)
   };
 
   return (
@@ -60,7 +151,7 @@ const MainPage = () => {
           <p className="error-msg"></p>
         </div>
         <div className="">
-          <Recipes recipes={recipeData} />
+          <Recipes recipes={recipes} />
         </div>
       </div>
     </>
