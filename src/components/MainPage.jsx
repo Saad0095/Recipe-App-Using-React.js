@@ -118,32 +118,30 @@ const MainPage = () => {
     },
   ];
 
-
   const [recipes, setRecipes] = useState([]);
 
   const [searchTerm, setSearchTerm] = useState("");
-  
+
   let errMsg = document.querySelector(".error-msg");
 
   const handleSearchInput = (event) => {
     setSearchTerm(event.target.value);
   };
 
-  
-  const getData = async () => {
+
+  const getData = () => {
     const filteredRecipes = allRecipes.filter(recipe =>
       recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    )
 
-    if (filteredRecipes.length === 0){
+    if (filteredRecipes.length === 0) {
       errMsg.innerText = "No Result Found";
       setRecipes([])
     }
 
-    else{
+    else {
       setRecipes(filteredRecipes)
       errMsg.innerText = "";
-
     }
   };
 
@@ -171,7 +169,7 @@ const MainPage = () => {
           <Recipes recipes={recipes} />
         </div>
       </div>
-        <Footer/>
+      <Footer />
     </>
   );
 };
